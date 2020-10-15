@@ -165,12 +165,19 @@ public class BallWorld {
 
 	    info.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
-	    		JDialog d = new JDialog(f, "Instructions?"); 
-	    		JLabel l = new JLabel("Click play button to start");
+	    		JDialog d = new JDialog(f, "Instructions"); 
+	    		String html = "<html><body width='%1s'><h1>&nbsp;Instructions</h1>"
+	                    + "<p>&nbsp;Click play button to start <br>"
+	    				+ "&nbsp;Click subtract button to remove a ball <br>"
+	    				+ "&nbsp;Click add button to add a ball <br></p>"
+	                    + "<br><br>"
+	                    + "<p>&nbsp;Dark mode enabled on move over inside "
+	                    + "ball panel.</p></body></html>";
+	    		JLabel l = new JLabel(html);
 	    		d.add(l); 
 	    		  
 	            // setsize of dialog 
-	            d.setSize(400, 400); 
+	            d.setSize(300, 300); 
 	    	    d.setLocationRelativeTo(null);
 	  
 	            // set visibility of dialog 
