@@ -1,0 +1,25 @@
+{
+  "name": "bouncy-balls",
+  "version": "1.0.0",
+  "description": "This software is a game which will keep the user entertained while the programsare compiling or executing.  The game consists of the balls bouncing around thewindow in an entertaining way.",
+  "main": "index.js",
+  "scripts": {
+    "commit": "git-cz",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rashi1997/Bouncy-Balls.git"
+  },
+  "author": "Rashi Dhar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Rashi1997/Bouncy-Balls/issues"
+  },
+  "homepage": "https://github.com/Rashi1997/Bouncy-Balls#readme"
+}

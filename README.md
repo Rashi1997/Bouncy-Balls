@@ -2,7 +2,8 @@
 
 This software is a game which will keep the user entertained while the programsare compiling or executing.  The game consists of the balls bouncing around thewindow in an entertaining way.
 
-[![Document](https://zenodo.org/badge/201963539.svg)](https://sites.google.com/brown.edu/csci1951u/assignments?authuser=0)
+[![Requirements](https://img.shields.io/badge/requirements-docs-blue)](https://github.com/Rashi1997/Bouncy-Balls/blob/main/requirements%20and%20specifications/requirements.pdf)
+[![Specifications](https://img.shields.io/badge/specifications-docs-success)](https://github.com/Rashi1997/Bouncy-Balls/blob/main/requirements%20and%20specifications/specifications.pdf)
 
 ## Functional Specifications
 
