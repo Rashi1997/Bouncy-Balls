@@ -20,3 +20,7 @@ This software is a game which will keep the user entertained while the programsa
 8. The text field on the start screen gets replaced by the count of the balls, add and subtract buttons when the user presses the play button.
 
 9. The default number of balls on the screen is 50.
+
+## Functional Specifications
+
+![Test Image 4](https://github.com/Rashi1997/Bouncy-Balls/blob/main/xyz.png)
