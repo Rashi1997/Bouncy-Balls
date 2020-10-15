@@ -21,6 +21,8 @@ This software is a game which will keep the user entertained while the programsa
 
 9. The default number of balls on the screen is 50.
 
+10. The background of the balls panel changes to black on mouse over and changes back to white on mouse exit, while playing the game.
+
 ## Use Case Diagram
 
 ![Test Image 4](https://github.com/Rashi1997/Bouncy-Balls/blob/main/img/usecasedia.png)
