@@ -23,4 +23,4 @@ This software is a game which will keep the user entertained while the programsa
 
 ## Use Case Diagram
 
-![Test Image 4](https://github.com/Rashi1997/Bouncy-Balls/blob/main/xyz.png)
+![Test Image 4](https://github.com/Rashi1997/Bouncy-Balls/blob/main/xyz.png){:height="700px" width="400px"}
