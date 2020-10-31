@@ -21,5 +21,10 @@
   "bugs": {
     "url": "https://github.com/Rashi1997/Bouncy-Balls/issues"
   },
-  "homepage": "https://github.com/Rashi1997/Bouncy-Balls#readme"
+  "homepage": "https://github.com/Rashi1997/Bouncy-Balls#readme",
+  "dependencies": {
+    "cz-conventional-changelog": "^3.3.0",
+    "express": "^4.17.1",
+    "git-cz": "^4.7.1"
+  }
 }

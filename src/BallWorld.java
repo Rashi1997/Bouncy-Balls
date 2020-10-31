@@ -21,9 +21,10 @@ public class BallWorld {
 	private static int noofballs=50;
 	private static JLabel ballslabel;
 	public BallWorld() {
+//		initializing frame
 		f = new JFrame();
-//		ArrayList<Integer> velocities = new ArrayList<Integer>(Arrays.asList(-5,-4,-3,-2,-1,1,2,3,4,5));
-//		Random rand = new Random(); 
+		
+//		GUI initializations
 		Border emptyBorder = BorderFactory.createEmptyBorder();
 		
 		java.net.URL infoUrl = getClass().getResource("images/info.png");
@@ -46,9 +47,31 @@ public class BallWorld {
 		JPanel bottomPanel = new JPanel(new BorderLayout());
 		JPanel midpanel = new JPanel(new BorderLayout());
 		JPanel textpanel = new JPanel(new BorderLayout());
+		drawPanel = new DrawPanel();
 		ballslabel = new JLabel();
+	    JButton subtract=new JButton(subtracticon);
+		JButton add=new JButton(addicon);
+		JButton info=new JButton(infoicon);
+	    JButton playPause=new JButton(playicon);
+	    
+	    
+
+		balls = new ArrayList<>();
+
+//	    creating instance of buttons 
+	    subtract.setBorder(emptyBorder);
+		add.setBorder(emptyBorder);
+	    info.setBorder(emptyBorder);
+	    playPause.setBorder(emptyBorder);
+		
+		
+//		Text for number of balls
 		ballslabel.setText("Balls"+noofballs);
+		
+//		Text field input
 		JTextField txtInput = new JTextField("Enter upto 1000 balls");
+		
+//		Listener for text field input for initializing number of balls on screen
 		txtInput.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
 	    		if(!txtInput.getText().isEmpty()) {
@@ -80,20 +103,19 @@ public class BallWorld {
 	    	}
 	    });
 		
-	    JButton subtract=new JButton(subtracticon);
-		//creating instance of JButton  
-	    subtract.setBorder(emptyBorder);
-		JButton add=new JButton(addicon);
-		//creating instance of JButton  
-		add.setBorder(emptyBorder);
 		
-
+		
+//		adding text field to center of text panel
 		textpanel.add(txtInput, BorderLayout.CENTER);
 		textpanel.setBorder(BorderFactory.createEmptyBorder(0,30,0,30));
 	    midpanel.add(textpanel, BorderLayout.CENTER);
 
+	    
+	    
 	    midpanel.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
 	    bottomPanel.add(midpanel, BorderLayout.CENTER);
+	    
+//	    adding listener for subtract button
 	    subtract.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
 	    		if(balls.size()>0) {
@@ -109,7 +131,8 @@ public class BallWorld {
 	    	}
 	    });	
 
-		drawPanel = new DrawPanel();
+	    
+//	    adding mouse listener to draw panel for dark mode
 	    drawPanel.addMouseListener(new MouseAdapter() {
             private Color background;
 
@@ -126,6 +149,8 @@ public class BallWorld {
             }
         });
 
+	    
+//	    adding listener for add button
 		add.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
 	    		if(balls.size()<1010) {
@@ -142,8 +167,6 @@ public class BallWorld {
 	                            (int) Math.floor((Math.random() * 256))
 	                    ),
 	                    /* Random velocities from -5 to 5 */
-//	                    velocities.get(rand.nextInt(velocities.size())),
-//	                    velocities.get(rand.nextInt(velocities.size()))
 	                    (int) Math.floor((Math.random() * 10) - 5),
 	                    (int) Math.floor((Math.random() * 10) - 5)
 	            );
@@ -159,10 +182,9 @@ public class BallWorld {
 	    		}
 	    	}
 	    });	
-		JButton info=new JButton(infoicon);
-		//creating instance of JButton  
-	    info.setBorder(emptyBorder);
-
+		
+		
+//		adding listener for info button
 	    info.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
 	    		JDialog d = new JDialog(f, "Instructions"); 
@@ -184,12 +206,9 @@ public class BallWorld {
 	            d.setVisible(true);
 	    	}
 	    });
-		balls = new ArrayList<>();
 	    
-	    JButton playPause=new JButton(playicon);
-		//creating instance of JButton  
-	    playPause.setBorder(emptyBorder);
 	    
+//		adding listener for play pause button
 	    playPause.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
 	    		playPause.setIcon( flag ? pauseicon :playicon  );
@@ -197,7 +216,6 @@ public class BallWorld {
     			try {
 					Thread.sleep(10);
 				} catch (InterruptedException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 	    		if(flag) {
@@ -217,8 +235,6 @@ public class BallWorld {
 		    	                            (int) Math.floor((Math.random() * 256))
 		    	                    ),
 		    	                    /* Random velocities from -5 to 5 */
-	//	    	                    velocities.get(rand.nextInt(velocities.size())),
-	//	    	                    velocities.get(rand.nextInt(velocities.size()))
 		    	                    (int) Math.floor((Math.random() * 10) - 5),
 		    	                    (int) Math.floor((Math.random() * 10) - 5)
 		    	            );
@@ -262,7 +278,6 @@ public class BallWorld {
 
 		bottomPanel.add(info, BorderLayout.LINE_END);
 		bottomPanel.add(playPause, BorderLayout.LINE_START);
-//		bottomPanel.add(subtract, BorderLayout.CENTER);
 		
 		
 	    mainPanel = new JPanel(new BorderLayout());
