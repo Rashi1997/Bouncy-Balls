@@ -4,23 +4,23 @@ import javax.swing.JFrame;
 import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Random;
+import java.util.concurrent.CopyOnWriteArrayList;
 //implements ActionListener 
 public class BallWorld {
 	
 	private JFrame f;
 	private static JPanel mainPanel;
     private DrawPanel drawPanel;
-    private static java.util.List<Ball> balls;
+    private static java.util.concurrent.CopyOnWriteArrayList<Ball> balls;
 	private static boolean flag = true;
-//	private static Point p = MouseInfo.getPointerInfo().getLocation();
-//	private static int mouseX = Integer.MAX_VALUE;
-//	private static int mouseY = Integer.MAX_VALUE;
 	private static int noofballs=50;
 	private static JLabel ballslabel;
 	public BallWorld() {
+		
+		
+		
+		
+		
 //		initializing frame
 		f = new JFrame();
 		
@@ -56,7 +56,7 @@ public class BallWorld {
 	    
 	    
 
-		balls = new ArrayList<>();
+		balls = new CopyOnWriteArrayList<>();
 
 //	    creating instance of buttons 
 	    subtract.setBorder(emptyBorder);
@@ -85,7 +85,7 @@ public class BallWorld {
 		    		if(digit ==true) { 
 		    			try {
 			    			if(Integer.parseInt(txtInput.getText())>1000)
-			    				noofballs=1000;
+			    				noofballs=Integer.parseInt(txtInput.getText());
 			    			else
 			    				noofballs = Integer.parseInt(txtInput.getText());
 		    			}
@@ -170,6 +170,8 @@ public class BallWorld {
 	                    (int) Math.floor((Math.random() * 10) - 5),
 	                    (int) Math.floor((Math.random() * 10) - 5)
 	            );
+	    		Thread thread = new Thread(ball);
+	    		thread.start();
 	            balls.add(ball);
 	            noofballs++;
 	    		ballslabel.setText("Balls   "+noofballs);
@@ -213,13 +215,14 @@ public class BallWorld {
 	    	public void actionPerformed(ActionEvent e) {
 	    		playPause.setIcon( flag ? pauseicon :playicon  );
 
+	    		/* Give Swing 10 milliseconds to add noofballs to screen! */
     			try {
 					Thread.sleep(10);
 				} catch (InterruptedException e1) {
 					e1.printStackTrace();
 				}
 	    		if(flag) {
-	    			balls = new ArrayList<>();
+	    			balls = new CopyOnWriteArrayList<>();
 
 	    			for (int i = 0; i < noofballs; i++) {
 		    	            Ball ball = new Ball(
@@ -238,6 +241,8 @@ public class BallWorld {
 		    	                    (int) Math.floor((Math.random() * 10) - 5),
 		    	                    (int) Math.floor((Math.random() * 10) - 5)
 		    	            );
+		    	    		Thread thread = new Thread(ball);
+		    	    		thread.start();
 		    	            balls.add(ball);
 	    	        }
 
@@ -257,7 +262,7 @@ public class BallWorld {
 	    		else {
 	    			noofballs=50;
 	    		    txtInput.setEditable(true);
-	    			balls = new ArrayList<>();
+	    			balls = new CopyOnWriteArrayList<>();
 	    			midpanel.remove(add);
 	    			midpanel.remove(subtract);
 	    			textpanel.remove(ballslabel);
@@ -294,13 +299,14 @@ public class BallWorld {
 	
 	static void updateeverthing() {
 		while (true) {
+	
             for (Ball b: balls) {
-                b.update();
+                b.run();
             }
 
             /* Give Swing 10 milliseconds to see the update! */
             try {
-                Thread.sleep(10);
+                Thread.sleep(20);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -319,7 +325,7 @@ public class BallWorld {
 	
 	
 	
-    class Ball {
+     class Ball implements Runnable{
         private int posX, posY, size;
         private Color color;
 
@@ -335,7 +341,7 @@ public class BallWorld {
             this.vy = vy;
         }
 
-        void update() {
+         public void run() {
 
             if (posX > mainPanel.getWidth()-20-2*size || posX < 0) {
                 vx *= -1;
@@ -370,6 +376,7 @@ public class BallWorld {
             g.setColor(color);
             g.fillOval(posX, posY, size, size);
         }
+
     }
     
     
